@@ -1,0 +1,132 @@
+.navbar {
+  margin-top: 10px;
+  padding: 20px 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  animation: fadeIn 2s;
+}
+.navbar .logo {
+  width: 150px;
+}
+.navbar-menu {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+  color: black;
+  font-size: 18px;
+  font-weight: 600;
+}
+.navbar-menu li {
+  cursor: pointer;
+}
+.navbar-right {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+.navbar button {
+  background: transparent;
+  font-size: 16px;
+  font-weight: 500;
+  color: #49557e;
+  border: 1px solid tomato;
+  padding: 10px 30px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.4s;
+}
+.navbar button:hover {
+  background-color: #fff4f2;
+  color: black;
+}
+.navbar .active {
+  padding-bottom: 2px;
+  border-bottom: 2px solid #49667e;
+}
+.navbar-search-icon {
+  position: relative;
+}
+.navbar-search-icon .dot {
+  position: absolute;
+  min-height: 10px;
+  min-width: 10px;
+  background-color: tomato;
+  border-radius: 5px;
+  top: -10px;
+  right: -10px;
+}
+.basket-icon {
+  animation: bounceIn 2s infinite;
+}
+@keyframes bounceIn {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Media queries */
+
+@media (max-width: 1050px) {
+  .navbar .logo {
+    width: 140px;
+  }
+  .navbar-menu {
+    gap: 20px;
+    font-size: 17px;
+  }
+  .navbar-right {
+    gap: 30px;
+  }
+  .navbar-right img {
+    width: 22px;
+  }
+  .navbar-right button {
+    padding: 8px 25px;
+  }
+}
+@media (max-width: 900px) {
+  .navbar .logo {
+    width: 120px;
+  }
+  .navbar-menu {
+    gap: 15px;
+    font-size: 15px;
+  }
+  .navbar-right {
+    gap: 20px;
+  }
+  .navbar-right img {
+    width: 20px;
+  }
+  .navbar-right button {
+    padding: 7px 20px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 750px) {
+  .navbar-menu {
+    display: none;
+  }
+  .navbar-search-icon .dot {
+    min-height: 8px;
+    min-width: 8px;
+    top: -8px;
+    right: -8px;
+  }
+  .basket-icon {
+    animation: none;
+  }
+}
