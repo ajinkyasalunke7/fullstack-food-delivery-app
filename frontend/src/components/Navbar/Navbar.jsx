@@ -1,9 +1,12 @@
 import "./Navbar.css";
 import { assets } from "../../assets/assets";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { StoreContext } from "../../context/StoreContext";
 
 export default function Navbar({ setShowLogin }) {
+  const { getTotalCartAmount } = useContext(StoreContext);
+
   const [menu, setMenu] = useState("home");
   useEffect(() => {
     console.log("Navbar menu:", menu);
@@ -50,13 +53,15 @@ export default function Navbar({ setShowLogin }) {
           <Link to={`/cart`}>
             <img
               src={assets.basket_icon}
-              className="basket-icon"
+              className={`basket-icon ${
+                getTotalCartAmount() === 0 ? "" : "bounce"
+              }`}
               alt="basket-icon"
               draggable="false"
             />
           </Link>
 
-          <div className="dot"></div>
+          <div className={getTotalCartAmount() === 0 ? "" : "dot"}></div>
         </div>
         <button onClick={() => setShowLogin(true)}>Sign Up</button>
       </div>
