@@ -1,10 +1,18 @@
 import express from "express";
 import cors from "cors";
+import dotenv from "dotenv";
 import { db_connection } from "./config/db_config.js";
+
+// Dotenv setup
+
+dotenv.config({
+  path: ".env",
+});
+
 // app config
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 8000;
 
 // middlewares config
 
@@ -25,5 +33,3 @@ app.get(`/`, (req, res) => {
 app.listen(port, () => {
   console.log(`Server is running on: ${"http://localhost:" + port}`);
 });
-
-// mongodb+srv://food-app:food-app@cluster0.eyfplol.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
