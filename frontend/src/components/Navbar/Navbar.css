@@ -88,6 +88,7 @@
   }
   .navbar-right {
     gap: 30px;
+    margin-left: 15px;
   }
   .navbar-right img {
     width: 22px;
@@ -106,6 +107,7 @@
   }
   .navbar-right {
     gap: 20px;
+    margin-left: 15px;
   }
   .navbar-right img {
     width: 20px;
