@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import { db_connection } from "./config/db_config.js";
-
+import foodRouter from "./routes/food-route.js";
 // Dotenv setup
 
 dotenv.config({
@@ -22,6 +22,11 @@ app.use(cors());
 // DB connection
 db_connection();
 
+// Api Endpoints
+
+app.use(`/api/food`, foodRouter);
+app.use(`/images`, express.static("uploads"));
+
 app.get(`/`, (req, res) => {
   res.send({
     data: null,
@@ -31,5 +36,5 @@ app.get(`/`, (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Server is running on: ${"http://localhost:" + port}`);
+  console.log(`Server is running on: ${"http://localhost:" + port}/api/`);
 });
