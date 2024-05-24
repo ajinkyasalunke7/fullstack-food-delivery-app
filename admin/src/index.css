@@ -3,7 +3,6 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font: optional;
   font-family: "Outfit", sans-serif;
   scroll-behavior: smooth;
 }
@@ -31,4 +30,31 @@ hr {
 } */
 .app-content {
   display: flex;
+}
+.flex-col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.cursor {
+  cursor: pointer;
+}
+.mt {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
 }

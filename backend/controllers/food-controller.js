@@ -48,26 +48,24 @@ const addFood = asyncHandler(async (req, res) => {
 const listAllFoodItems = asyncHandler(async (req, res) => {
   try {
     const foodItems = await FoodModel.find({});
-    res.json(
-      new ApiResponse(
-        200,
-        foodItems.length === 0 ? ["Empty array"] : foodItems || null,
-        foodItems.length === 0 ? "Empty array sended" : "All food items sent"
-      )
-    );
+
+    if (!foodItems || foodItems.length === 0) {
+      return res
+        .status(404)
+        .json(new ApiResponse(404, null, "No food items found"));
+    }
+
+    return res.json(new ApiResponse(200, foodItems, "All food items sent"));
   } catch (error) {
-    res
-      .status(error.statusCode || 500)
-      .json(
-        new ApiResponse(
-          error.statusCode || 500,
-          null,
-          error.message || "An error occurred while processing your request."
-        )
-      );
+    console.error("Error while listing food items:", error);
+    const statusCode = error.statusCode || 500;
+    const message =
+      error.message || "An error occurred while processing your request.";
+    return res
+      .status(statusCode)
+      .json(new ApiResponse(statusCode, null, message));
   }
 });
-
 // Remove food item
 
 const removeFoodItem = asyncHandler(async (req, res) => {
