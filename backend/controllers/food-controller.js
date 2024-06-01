@@ -50,9 +50,7 @@ const listAllFoodItems = asyncHandler(async (req, res) => {
     const foodItems = await FoodModel.find({});
 
     if (!foodItems || foodItems.length === 0) {
-      return res
-        .status(404)
-        .json(new ApiResponse(404, null, "No food items found"));
+      return res.json(new ApiResponse(400, null, "No food items found"));
     }
 
     return res.json(new ApiResponse(200, foodItems, "All food items sent"));

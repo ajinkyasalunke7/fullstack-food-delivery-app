@@ -16,6 +16,23 @@ function App() {
         <div className="app-content">
           <SideBar />
           <Routes>
+            <Route
+              path={`/`}
+              element={
+                <>
+                  <h1
+                    className="flex"
+                    style={{
+                      textAlign: "left",
+                      marginTop: "100px",
+                      marginLeft: "100px",
+                    }}
+                  >
+                    Admin Panel
+                  </h1>
+                </>
+              }
+            />
             <Route path={`/add`} element={<Add />} />
             <Route path={`/list`} element={<List />} />
             <Route path={`/orders`} element={<Orders />} />

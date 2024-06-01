@@ -18,6 +18,8 @@ export default function List() {
         toast.success(
           response.data.message || "Food items loaded successfully"
         );
+      } else if (response.data.statusCode === 400) {
+        toast.success(response.data.message);
       } else {
         throw new Error(
           response.data.message || "Error occurred while fetching food items"
